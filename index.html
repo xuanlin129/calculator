@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <title>【WDAWEB】計算機</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      /* background-image: url("./knowledge_b1.jpg"); */
+      /* background-size: 100vw 100vh;
+      background-repeat: no-repeat; */
+      font-family: 'Oswald', sans-serif;
+      font-weight: bold;
+    }
+
+    #top {
+      height: 10vh;
+      width: 100vw;
+      background-color: #333;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+
+    #top img {
+      width: 6vh;
+      height: 6vh;
+      position: absolute;
+      top: 2vh;
+      left: 1%;
+    }
+
+    #content {
+      width: 100vw;
+      position: relative;
+      top: 10vh;
+    }
+
+    #left {
+      width: 70vw;
+      height: 90vh;
+      /* background: lightblue; */
+      float: left;
+      padding: 20px;
+      text-align: center;
+      border-right: 1px solid #ccc;
+    }
+
+    #left table {
+      width: 250px;
+      height: 400px;
+      table-layout: fixed;
+      border-radius: 1rem;
+      padding: 5px;
+      font-size: 24px;
+      margin: 10vh auto 15vh;
+      -webkit-user-drag: none;
+    }
+
+    #left table tr:first-child td {
+      width: 0;
+      overflow-x: scroll;
+      padding-top: 3px;
+    }
+
+    #left table ::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    #left td {
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      vertical-align: middle;
+      /* background: radial-gradient(#ccc, #333); */
+      border: 1px solid #fff;
+      border-radius: 0.5rem;
+      padding: 5px;
+    }
+
+    #left .tdc:not(#text) {
+      cursor: pointer;
+    }
+
+    #left #text {
+      text-align: right;
+      font-size: 32px;
+    }
+
+    #left::after {
+      content: "";
+      width: 250px;
+      height: 100px;
+      border-radius: 50%;
+      background: #16161617;
+      display: block;
+      position: absolute;
+      left: calc(35vw - 125px);
+      top: 60vh;
+      transform: rotateX(70deg);
+      box-shadow: 0 0 25px #16161636;
+    }
+
+    #logo {
+      position: absolute;
+      left: calc(35vw - 37.5px);
+      top: 30vh;
+      z-index: 1;
+      -webkit-user-drag: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    #range {
+      -webkit-appearance: none;
+      width: 60vw;
+      height: 5vh;
+      background: rgba(226, 224, 224, 0.5);
+      border-radius: 10px;
+      background-size: 70% 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 5%;
+      top: 700px;
+      cursor: url(https://www.yamaha-motor.com.tw/images/jquery.reel.cur), auto;
+    }
+
+    #range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 60px;
+      width: 30px;
+      border-radius: 2rem;
+      background: #aba8a6;
+      /* box-shadow: 0 0 2px 0 #555; */
+      transition: background .3s ease-in-out;
+
+    }
+
+    #range::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      box-shadow: none;
+      border: none;
+      background: transparent;
+    }
+
+    #right {
+      width: 30vw;
+      height: 90vh;
+      /* background: lightgoldenrodyellow; */
+      float: right;
+      padding: 20px;
+    }
+
+    #right ul {
+      margin-bottom: 4rem;
+    }
+
+    #right p {
+      width: 90%;
+      text-indent: 2rem;
+      padding: 1rem;
+    }
+
+    #button {
+      text-align: center;
+      height: 50px;
+    }
+
+    #button table {
+      width: 80%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      margin: auto;
+      margin-top: 5rem;
+    }
+
+    #button td {
+      vertical-align: middle;
+      height: 50px;
+    }
+
+    .color {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #gray {
+      background: linear-gradient(45deg, #434343 20%, #ccc 50%, #434343 80%);
+      /* background: radial-gradient(#ccc 20%, #434343 80%); */
+      filter: drop-shadow(1px 1px 2px #333);
+    }
+
+    #gold {
+      background: linear-gradient(45deg, #F5DEB3 15%, #fcf2db 50%, #F5DEB3 85%);
+      filter: drop-shadow(1px 1px 2px #333);
+    }
+
+    #purple {
+      background: linear-gradient(45deg, #B39CD0 20%, #FBEAFF 50%, #B39CD0 80%);
+      filter: drop-shadow(1px 1px 2px #333);
+    }
+
+    #blue {
+      background: linear-gradient(45deg, #99BDD9 20%, #dcf6ff 50%, #99BDD9 80%);
+      filter: drop-shadow(1px 1px 2px #333);
+    }
+
+    #pink {
+      background: linear-gradient(45deg, #FFC0CB 20%, #fde6ed 50%, #FFC0CB 80%);
+      filter: drop-shadow(1px 1px 2px #333);
+    }
+
+    #shop {
+      width: 18vw;
+      height: 5vh;
+      margin-top: 2rem;
+      border-radius: 2rem;
+      background: #333;
+      color: #fff;
+      transition: 0.5s;
+      font-size: 18px;
+    }
+
+    #shop:hover {
+      cursor: pointer;
+      border: 1px solid red;
+      background: red;
+      transform: scale(1.1);
+    }
+
+    .big {
+      font-size: 24px;
+      text-decoration: underline;
+    }
+
+    .border-blue {
+      border: 2px solid rgb(72, 194, 255);
+    }
+
+    select {
+      width: 100px;
+      height: 25px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="top">
+    <a href="./計算機.html"><img src="https://github.com/wdaweb.png" width="50px" height="50px"></a>
+  </div>
+  <div id="content">
+    <div id="left">
+      <div id="logo" style="display: none;">
+        <img src="./logo.png" width="75px" height="75px">
+      </div>
+      <table border="1" id="table">
+        <tr>
+          <td colspan="4" id="text" class="tdc">0</td>
+        </tr>
+        <tr>
+          <td class="tdc">C</td>
+          <td class="tdc">/</td>
+          <td class="tdc">*</td>
+          <td class="tdc">-</td>
+        </tr>
+        <tr>
+          <td class="tdc">7</td>
+          <td class="tdc">8</td>
+          <td class="tdc">9</td>
+          <td class="tdc" rowspan="2">+</td>
+        </tr>
+        <tr>
+          <td class="tdc">4</td>
+          <td class="tdc">5</td>
+          <td class="tdc">6</td>
+        </tr>
+        <tr>
+          <td class="tdc">1</td>
+          <td class="tdc">2</td>
+          <td class="tdc">3</td>
+          <td class="tdc" rowspan="2">=</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="tdc">0</td>
+          <td class="tdc">.</td>
+        </tr>
+      </table>
+      <input type="range" id="range" min="-180" max="180" value="0">
+    </div>
+    <div id="right">
+      <h2>【WDAWEB】計算機</h2>
+      <ul>
+        <li>原廠公司貨</li>
+        <li>大字幕顯示</li>
+      </ul>
+      <p>計算機是一種能夠進行各種數學運算和函數的電子裝置，廣泛應用於學習、工作、生活等領域。不論你是學生、老師、會計、工程師還是其他職業，你都需要一台好用的計算機來幫助你解決問題和提高效率。</p>
+      <div id="button">
+        <form>
+          <table>
+            <tr>
+              <td>顏色：</td>
+              <td><span id="color-text" class="big"></span></td>
+              <td colspan="3"></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="color" id="gray" title="灰色"></div>
+              </td>
+              <td>
+                <div class="color" id="gold" title="金色"></div>
+              </td>
+              <td>
+                <div class="color" id="purple" title="紫色"></div>
+              </td>
+              <td>
+                <div class="color" id="blue" title="天藍"></div>
+              </td>
+              <td>
+                <div class="color" id="pink" title="粉色"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>數量：</td>
+              <td colspan="3">
+                <select>
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                  <option value="">4</option>
+                  <option value="">5</option>
+                </select>
+              </td>
+              <td>
+                個
+              </td>
+            </tr>
+            <tr>
+              <td>價格：</td>
+              <td colspan="3" class="big">50134</td>
+              <td>元</td>
+            </tr>
+          </table>
+          <input type="submit" value="加入購物車" id="shop">
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    const text = document.getElementById('text')
+    const btns = document.querySelectorAll('.tdc:not(#text)')
+
+    for (const btn of btns) {
+      btn.addEventListener('click', () => {
+        const btnText = btn.innerText
+        const operators = ['+', '-', '*', '/', '.']
+        const lastText = text.innerText[text.innerText.length - 1]
+        // 如果按的鍵是 '='
+        if (btnText === '=') {
+          if (!operators.includes(btnText)) {
+            text.innerText = eval(text.innerText)
+          }
+        }
+        // 如果按 C，歸 0
+        else if (btnText === 'C') {
+          text.innerText = '0'
+        }
+        // 如果現在是 0，按的是數字，把文字取代
+        else if (text.innerText === '0' && !isNaN(parseInt(btnText))) {
+          text.innerText = btnText
+        }
+        // 如果最後一個字是運算子
+        else if (operators.includes(lastText)) {
+          // 現在按的不是運算子，才加上去
+          if (!operators.includes(btnText)) {
+            text.innerText += btnText
+          }
+        }
+        // 如果最後一個字不是運算子，加上去
+        else {
+          text.innerText += btnText
+        }
+      })
+    }
+
+    document.addEventListener('keydown', event => {
+      const btnText = event.key
+      const operators = ['+', '-', '*', '/', '.']
+      const lastText = text.innerText[text.innerText.length - 1]
+      // 如果按的鍵是 =
+      if (btnText === '=' || btnText === 'Enter') {
+        // 如果最後一個字不是運算子，才計算
+        if (!operators.includes(lastText)) {
+          text.innerText = eval(text.innerText)
+        }
+      }
+      // 如果按 C，歸 0
+      else if (btnText === 'c') {
+        text.innerText = '0'
+      }
+      // 如果現在是 0，按的是數字，把文字取代
+      else if (text.innerText === '0' && !isNaN(parseInt(btnText))) {
+        text.innerText = btnText
+      }
+      // 如果最後一個字是運算子
+      else if (operators.includes(lastText)) {
+        // 現在按的不是運算子，且是數字才加上去
+        if (!operators.includes(btnText) && !isNaN(parseInt(btnText))) {
+          text.innerText += btnText
+        }
+      }
+      // 如果最後一個字不是運算子，且按的是數字或運算子，加上去
+      else if (!isNaN(parseInt(btnText)) || operators.includes(btnText)) {
+        text.innerText += btnText
+      }
+    })
+
+    const colors = document.querySelectorAll('.color')
+    const table = document.querySelector('#table')
+    const tds = document.querySelectorAll('.tdc')
+    const colorText = document.querySelector('#color-text')
+
+    console.log(tds)
+
+    colors.forEach((color, index) => {
+      color.addEventListener('click', () => {
+        for (let i = 0; i < colors.length; i++) {
+          colors[i].classList.remove('border-blue')
+        }
+        color.classList.add('border-blue')
+        if (index === 0) {
+          table.style.background = 'rgb(200, 200, 198)'
+          colorText.innerText = '灰色'
+          for (const td of tds) {
+            td.style.background = 'radial-gradient(#ccc, #333)'
+          }
+        } else if (index === 1) {
+          table.style.background = '#FFEECA'
+          colorText.innerText = '金色'
+          for (const td of tds) {
+            td.style.background = 'radial-gradient(#FFEECA 0%,  #BCA77E 100%)'
+          }
+        } else if (index === 2) {
+          table.style.background = '#FBEAFF'
+          colorText.innerText = '紫色'
+          for (const td of tds) {
+            td.style.background = 'radial-gradient(#FBEAFF 0%,  #B39CD0 100%)'
+          }
+        } else if (index === 3) {
+          table.style.background = '#cce5ed'
+          colorText.innerText = '天藍'
+          for (const td of tds) {
+            td.style.background = 'radial-gradient(#cce5ed 0%,  #99BDD9 100%)'
+          }
+        } else if (index === 4) {
+          table.style.background = '#FFE3EC'
+          colorText.innerText = '粉色'
+          for (const td of tds) {
+            td.style.background = 'radial-gradient(#FFE3EC 0%,  #FFC0CB 100%)'
+          }
+        }
+      })
+    })
+    colors[0].click()
+
+    const logo = document.querySelector('#logo')
+    const range = document.querySelector('#range')
+    range.addEventListener('input', () => {
+      table.style.transform = `rotateY(${range.value}deg)`
+      if (range.value > 90 || range.value < -90) {
+        for (const td of tds) {
+          td.style.display = 'none'
+          logo.style.display = 'block'
+          logo.style.transform = `rotateY(${range.value - 180}deg)`
+        }
+      } else {
+        for (const td of tds) {
+          td.style.display = 'table-cell'
+        }
+        logo.style.display = 'none'
+      }
+    })
+
+  </script>
+</body>
+
+</html>
